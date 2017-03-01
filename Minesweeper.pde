@@ -22,7 +22,7 @@ void setup ()
             buttons[i][j] = new MSButton(i,j);
         }
     }
-    
+
     setBombs();
 }
 public void setBombs()
@@ -49,18 +49,39 @@ public void draw ()
 }
 public boolean isWon()
 {
-    //your code here
+    int clear = 0; 
+
     return false;
 }
 public void displayLosingMessage()
 {
-    //your code here
+    buttons[9][7].label = "Y";
+    buttons[9][8].label = "0";
+    buttons[9][9].label = "U";
+    buttons[9][10].label = " ";
+    buttons[9][11].label = "L";
+    buttons[9][12].label = "O";
+    buttons[9][13].label = "S";
+    buttons[9][14].label = "E";
+
+    for (int i = 0; i < NUM_ROWS; i++)
+    {
+        for (int j = 0; j < NUM_COLS; j++)
+        {
+            buttons[i][j].clicked = true;
+        }
+    }
 }
 public void displayWinningMessage()
 {
-    //your code here
+    buttons[9][7].label = "Y";
+    buttons[9][8].label = "0";
+    buttons[9][9].label = "U";
+    buttons[9][10].label = " ";
+    buttons[9][11].label = "W";
+    buttons[9][12].label = "I";
+    buttons[9][13].label = "N";
 }
-
 public class MSButton
 {
     private int r, c;
@@ -121,7 +142,7 @@ public class MSButton
                 {
                     if ( isValid(i,j) )
                     {
-                        if ( buttons[i][j].clicked = false )
+                        if ( buttons[i][j].clicked == false )
                         {
                             buttons[i][j].mousePressed();
                         }
@@ -152,7 +173,7 @@ public class MSButton
     }
     public boolean isValid(int r, int c)
     {
-        if (r >= 0 && r <= NUM_ROWS && c >= 0 && c <= NUM_COLS)
+        if (r >= 0 && r < NUM_ROWS && c >= 0 && c < NUM_COLS)
         {
             return true;
         }
